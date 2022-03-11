@@ -23,7 +23,7 @@ def user_inputs(filename):
             user_inputs(filename)
 
 
-#Method to search for term to see if there is anything to replace
+#Search for term to see if there is anything to replace
 def wordFinder(filename, user_word):
     count = 0
     with open(filename, "r") as testfile:
@@ -32,8 +32,9 @@ def wordFinder(filename, user_word):
                 count += 1
     return count
 
-#Method to go through document line by line and ask user if they want to replace each instance 
+#Go through document line by line and ask user if they want to replace each instance 
 def replaceSome(filename, user_word):    
+    new_file = []
     with open(filename, "r") as testfile:     
         for num, line in enumerate(testfile, 1):
             if user_word in line:
@@ -42,9 +43,29 @@ def replaceSome(filename, user_word):
                 if choice.upper() == "Y":
                     replace_line = line.replace(user_word, "***")
                     print(replace_line)
-                    
-        
-#Method to replace all instances of word/phrase with ***
+                    new_file.append(replace_line)
+                else:
+                    new_file.append(line)
+            else:
+                new_file.append(line)
+    with open(filename, "w") as testfile2:
+        testfile2.writelines(new_file)
+
+#    with open(filename, "r+") as testfile:
+#        file_lines = testfile.readlines()
+        #print(file_lines)
+#        for line in file_lines:
+#            print(line)
+#            if user_word in line:
+#                print(line)
+#                choice = input("Replace? (Y/N) ")
+#                if choice.upper() == "Y":
+                    #file_lines[line].replace(user_word, "***")
+#                    file_lines.write(line.replace(user_word, "***"))
+                    #file_lines.index(line).replace(user_word, "***")
+#        print(file_lines)
+
+#Replace all instances of word/phrase with ***
 def replaceAll(filename, user_word):
     with open(filename, "r") as testfile:
         file_lines = testfile.read()
