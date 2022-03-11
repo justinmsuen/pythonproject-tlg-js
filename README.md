@@ -2,7 +2,7 @@
 
 # Document Sanitizer
 
-This program will scan documents and replace any/all instances of words (or phrases) that the user inputs with asterisks. The old file will be deleted and only the new file remains will remain.
+This program will scan documents and replace any/all instances of words (or phrases) that the user inputs with asterisks. The old file will be deleted and only the new file will remain.
 
 ## Getting Started
 
